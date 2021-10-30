@@ -15,6 +15,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void onAddWidget();
+
+    void onRemoveWidget();
+
+private slots:
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
