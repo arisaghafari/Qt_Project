@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <QRadioButton>
 #include <QTimeEdit>
+#include <QTableWidgetItem>
 
 const int length = 7;
 QString arrComboBox[length];
@@ -29,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     for(int i = 0; i < length; i++){
         ui->comboBox->addItem(arrComboBox[i]);
     }
+    //QTableWidgetItem twi = new QTableWidgetItem("hi");
+    //ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    //ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1, twi);
     //connect(ui->pushButton_2, &QPushButton::clicked, this, &MainWindow::onAddWidget);
 }
 
@@ -37,7 +41,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::onAddWidget()
+/*void MainWindow::onAddWidget()
 {
     QVBoxLayout* layout = qobject_cast<QVBoxLayout*>(ui->verticalLayout->layout());
     QPushButton* button = new QPushButton("hi");
@@ -49,21 +53,27 @@ void MainWindow::onRemoveWidget()
 {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     delete button;
-}
+}*/
 void MainWindow::on_pushButton_2_clicked()
 {
-    //QMessageBox::information(this, "you choose",arrComboBox[ui->comboBox->currentIndex()]);
-    /*if(ui->comboBox->currentText()  == "progressbar"){
-        test.setValue(50);
-        QWidget widget = test;
-        ui->setupUi(&widget);
-    }*/
-    //map<string,int> stringCounts;
-    //qDebug(arrComboBox[ui->comboBox->currentIndex()])
-    QVBoxLayout* layout = qobject_cast<QVBoxLayout*>(ui->verticalLayout->layout());
+
+    //ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 1, new QTableWidgetItem("hi"));
+    //QMessageBox::information(this, "title", QString::number(ui->tableWidget->rowCount()));
+    //qDebug(QMessageLogger::info());
+    //ui->tableWidget->item(ui->tableWidget->rowCount(), 0)->setText("hi");
+    //ui->tableWidget->cellWidget(1,1)->hide();
+    //ui->tableWidget->setRowCount(1);
+    ui->tableWidget->setColumnCount(1);
+
+    //ui->tableWidget->setItem(0,1,new QTableWidgetItem("test"));
+    //ui->tableWidget->setItem(0,2,new QTableWidgetItem("fine"));
+
+    ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+    ui->tableWidget->setItem(ui->tableWidget->rowCount() - 1,0,new QTableWidgetItem(ui->comboBox->currentText()));
+
+    /*QVBoxLayout* layout = qobject_cast<QVBoxLayout*>(ui->verticalLayout->layout());
     if(ui->comboBox->currentText() == "progressbar")
     {
-        /////////////////////////////////////
     }
     else if(ui->comboBox->currentText() == "textarea")
     {
@@ -94,5 +104,5 @@ void MainWindow::on_pushButton_2_clicked()
     else if(ui->comboBox->currentText() == "radiobutton"){
         QRadioButton* rb = new QRadioButton("NEW RADIO BUTTON");
         layout->addWidget(rb);
-    }
+    }*/
 }
